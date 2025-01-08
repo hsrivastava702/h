@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Image Grid</title>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f4f4;
+      padding: 20px;
+    }
+    .title {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .title h1 {
+      font-size: 36px;
+      font-weight: bold;
+      color: #333;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+    }
+    .image-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .image-container {
+      width: 48%;
+      margin: 1%;
+      box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.3);
+      border-radius: 10px;
+      overflow: hidden;
+      text-align: center;
+      background-color: #fff;
+      padding-bottom: 10px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .image-container:hover {
+      transform: scale(1.03);
+      box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.4);
+    }
+    .image-container img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      display: block;
+    }
+    .image-info {
+      padding: 10px 0;
+    }
+    .image-info .name {
+      font-size: 22px;
+      font-weight: bold;
+      color: #333;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    .image-info .place {
+      font-size: 16px;
+      color: #555;
+      font-style: italic;
+      letter-spacing: 1px;
+    }
+    .clickable-text {
+      font-size: 22px;
+      font-weight: bold;
+      color: #333;
+      text-decoration: none;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+      padding: 10px 15px;
+      border: 2px solid transparent;
+      transition: color 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
+    }
+    .clickable-text:hover {
+      color: #007BFF;
+      border-color: #007BFF;
+      background-color: rgba(0, 123, 255, 0.1);
+    }
+    .clickable-text:active {
+      color: #fff;
+      background-color: #007BFF;
+      border-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <!-- Title -->
+  <div class="title">
+    <h1>Famous Visiting Places in Phoolchaati</h1>
+  </div>
+
+  <!-- Image Grid -->
+  <div class="image-grid">
+    <div class="image-container">
+      <a href="ram-jhula.html">
+        <img src="C:\Users\HP\Downloads\Suprams Internship\Day1\Ram.jpg" alt="Ram Jhula">
+      </a>
+      <div class="image-info">
+        <a href="ram-jhula.html" class="clickable-text">Ram Jhula</a>
+        <div class="place">Around 9 Km From the Resort</div>
+      </div>
+    </div>
+    <div class="image-container">
+      <a href="laxman-jhula.html">
+        <img src="C:\Users\HP\Downloads\Suprams Internship\Day1\Laxman.jpg" alt="Laxman Jhula">
+      </a>
+      <div class="image-info">
+        <a href="laxman-jhula.html" class="clickable-text">Laxman Jhula</a>
+        <div class="place">Around 7 km from the Resort</div>
+      </div>
+    </div>
+    <div class="image-container">
+      <a href="yoga-ashram.html">
+        <img src="C:\Users\HP\Downloads\Suprams Internship\Day1\Yoga.jpg" alt="Yoga Ashram">
+      </a>
+      <div class="image-info">
+        <a href="yoga-ashram.html" class="clickable-text">Yoga Ashram</a>
+        <div class="place">Around 3.2 Km from the Resort</div>
+      </div>
+    </div>
+    <div class="image-container">
+      <a href="wood-bridge.html">
+        <img src="C:\Users\HP\Downloads\Suprams Internship\Day1\wood.jpg" alt="Wood Bridge">
+      </a>
+      <div class="image-info">
+        <a href="wood-bridge.html" class="clickable-text">Wood Bridge</a>
+        <div class="place">Around 2.1 Km from the Resort</div>
+      </div>
+    </div>
+    <div class="image-container">
+      <a href="ganga-river.html">
+        <img src="C:\Users\HP\Downloads\Suprams Internship\Day1\Ganga.jpg" alt="River View">
+      </a>
+      <div class="image-info">
+        <a href="ganga-river.html" class="clickable-text">Ganga River</a>
+        <div class="place">Around 9.6 Km from the Resort</div>
+      </div>
+    </div>
+    <div class="image-container">
+      <a href="neelkanth-temple.html">
+        <img src="C:\Users\HP\Downloads\Suprams Internship\Day1\Neel.jpg" alt="Neelkanth Temple">
+      </a>
+      <div class="image-info">
+        <a href="neelkanth-temple.html" class="clickable-text">Neelkanth Temple</a>
+        <div class="place">Around 13 Km from the Resort</div>
+      </div>
+    </div>
+  </div>
+<div class="Back Button">
+<a href="https://liveinnhotels.com/the-corbett-greens.php">Go Back</a>
+</div>
+</body>
+</html>

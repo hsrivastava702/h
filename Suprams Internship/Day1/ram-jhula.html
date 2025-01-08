@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ram Jhula</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f4f4;
+      padding: 20px;
+    }
+    .title {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .title h1 {
+      font-size: 36px;
+      font-weight: bold;
+      color: #333;
+      text-transform: uppercase;
+    }
+    .slider-container {
+      position: relative;
+      max-width: 100%;
+      height: auto;
+      margin: 20px auto;
+      overflow: hidden;
+      border: 2px solid #ddd;
+      border-radius: 10px;
+    }
+    .slides {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+      will-change: transform;
+    }
+    .slides img {
+      width: 100%;
+      height: auto;
+      max-height: 500px;
+      object-fit: cover;
+    }
+    .navigation {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+    }
+    .prev, .next {
+      background-color: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      font-size: 18px;
+    }
+    .prev:hover, .next:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+    .description {
+      font-size: 18px;
+      color: #555;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    .back-link {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .back-link a {
+      font-size: 20px;
+      color: #007BFF;
+      text-decoration: none;
+    }
+    .back-link a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="title">
+    <h1>Ram Jhula</h1>
+  </div>
+  <div class="slider-container">
+    <div class="slides" id="slides">
+      <img src="C:\Users\HP\Downloads\Suprams Internship\Day1\Ram.jpg" alt="Ram Jhula">
+      <img src="C:\Users\HP\Downloads\Suprams Internship\Day1\Ram2.jpg" alt="Second Image">
+      <img src="C:\Users\HP\Downloads\Suprams Internship\Day1\Ram3.jpg" alt="Third Image">
+    </div>
+    <div class="navigation">
+      <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+      <button class="next" onclick="changeSlide(1)">&#10095;</button>
+    </div>
+  </div>
+  <div class="description">
+    <p>Ram Jhula (Hindi: राम झूला) is an iron suspension bridge across the river Ganges...</p>
+  </div>
+  <div class="back-link">
+    <a href="index.html">Back to Home</a>
+  </div>
+
+  <script>
+    const slides = document.getElementById('slides');
+    const images = Array.from(slides.children);
+    let currentSlide = 1;
+
+    // Clone the first and last elements for infinite scrolling
+    const firstClone = images[0].cloneNode(true);
+    const lastClone = images[images.length - 1].cloneNode(true);
+
+    slides.insertBefore(lastClone, slides.firstChild);
+    slides.appendChild(firstClone);
+
+    const totalSlides = slides.children.length;
+    const slideWidth = 100 / totalSlides;
+    slides.style.width = `${totalSlides * 100}%`;
+    slides.style.transform = `translateX(-${slideWidth}%)`;
+
+    Array.from(slides.children).forEach((slide) => {
+      slide.style.flex = `0 0 ${slideWidth}%`;
+    });
+
+    function changeSlide(direction) {
+      slides.style.transition = 'transform 0.5s ease-in-out';
+      currentSlide += direction;
+      slides.style.transform = `translateX(-${currentSlide * slideWidth}%)`;
+
+      slides.addEventListener('transitionend', () => {
+        if (currentSlide === 0) {
+          slides.style.transition = 'none';
+          currentSlide = totalSlides - 2;
+          slides.style.transform = `translateX(-${currentSlide * slideWidth}%)`;
+        }
+        if (currentSlide === totalSlides - 1) {
+          slides.style.transition = 'none';
+          currentSlide = 1;
+          slides.style.transform = `translateX(-${currentSlide * slideWidth}%)`;
+        }
+      });
+    }
+
+    setInterval(() => {
+      changeSlide(1);
+    }, 3000);
+  </script>
+</body>
+</html>

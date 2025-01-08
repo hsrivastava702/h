@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Yoga Ashram</title>
+  <style type="text/css">
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f4f4;
+      padding: 20px;
+    }
+    .title {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .title h1 {
+      font-size: 36px;
+      font-weight: bold;
+      color: #333;
+      text-transform: uppercase;
+    }
+    .slider {
+      position: relative;
+      max-width: 100%;
+      overflow: hidden;
+      margin: 0 auto;
+    }
+    .slides {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+      width: 300%;
+    }
+    .slides img {
+      width: 100%;
+      height: auto;
+      max-height: 500px;
+      object-fit: cover;
+    }
+    .navigation {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+    }
+    .navigation button {
+      background-color: rgba(0, 0, 0, 0.5);
+      border: none;
+      color: white;
+      font-size: 18px;
+      cursor: pointer;
+      padding: 10px 20px;
+      opacity: 0.7;
+    }
+    .navigation button:hover {
+      opacity: 1;
+    }
+    .description {
+      font-size: 18px;
+      color: #555;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    .back-link {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .back-link a {
+      font-size: 20px;
+      color: #007BFF;
+      text-decoration: none;
+    }
+    .back-link a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="title">
+    <h1>Yoga Ashram</h1>
+  </div>
+  <div class="slider">
+    <div class="slides" id="slides">
+      <!-- Images will be dynamically adjusted -->
+      <img src="C:\Users\HP\Downloads\Suprams Internship\Day1\Yoga.jpg" alt="Yoga Ashram">
+      <img src="C:\Users\HP\Downloads\Suprams Internship\Day1\Yoga2.jpg" alt="Yoga Ashram">
+      <img src="C:\Users\HP\Downloads\Suprams Internship\Day1\Yoga3.jpg" alt="Yoga Ashram">
+    </div>
+    <div class="navigation">
+      <button id="prev">&#10094;</button>
+      <button id="next">&#10095;</button>
+    </div>
+  </div>
+  <div class="description">
+    <p>The Yoga Ashram is a place dedicated to learning and practicing yoga in its purest form. It offers training sessions for individuals interested in deepening their yoga practices and spirituality. The serene environment and the surrounding natural beauty make it a peaceful retreat.</p>
+  </div>
+  <div class="back-link">
+    <a href="index.html">Back to Home</a>
+  </div>
+
+  <script>
+    const slides = document.getElementById('slides');
+    const prev = document.getElementById('prev');
+    const next = document.getElementById('next');
+    const images = Array.from(slides.children);
+    let index = 0;
+
+    // Clone the first and last images for seamless loop
+    const firstClone = images[0].cloneNode(true);
+    const lastClone = images[images.length - 1].cloneNode(true);
+
+    // Append clones to the beginning and end
+    slides.appendChild(firstClone);
+    slides.insertBefore(lastClone, slides.firstChild);
+
+    // Update the width of the slides to accommodate the new clones
+    const totalSlides = slides.children.length;
+    const slideWidth = 100 / totalSlides;
+    slides.style.width = `${totalSlides * 100}%`;
+    slides.style.transform = `translateX(-${(index + 1) * slideWidth}%)`;  // Start at the second image (the first clone)
+
+    // Handle slide change (next and previous)
+    prev.addEventListener('click', () => {
+      index = (index > 0) ? index - 1 : images.length - 1; // Move to the last image
+      slides.style.transition = 'transform 0.5s ease-in-out';
+      slides.style.transform = `translateX(-${(index + 1) * slideWidth}%)`;
+    });
+
+    next.addEventListener('click', () => {
+      index = (index < images.length) ? index + 1 : 0; // Loop back to first image
+      slides.style.transition = 'transform 0.5s ease-in-out';
+      slides.style.transform = `translateX(-${(index + 1) * slideWidth}%)`;
+    });
+
+    // Reset to the second image after the animation ends (looping effect)
+    slides.addEventListener('transitionend', () => {
+      if (index === images.length) {
+        slides.style.transition = 'none';
+        index = 0;
+        slides.style.transform = `translateX(-${(index + 1) * slideWidth}%)`;
+      }
+    });
+  </script>
+</body>
+</html>

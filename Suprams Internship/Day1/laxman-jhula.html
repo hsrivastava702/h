@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Laxman Jhula</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f4f4;
+      padding: 20px;
+    }
+
+    .title {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .title h1 {
+      font-size: 36px;
+      font-weight: bold;
+      color: #333;
+      text-transform: uppercase;
+    }
+
+    .split-slider {
+      position: relative;
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto 20px auto;
+      height: 400px; /* Fixed height for consistent appearance */
+      overflow: hidden;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+    }
+
+    .image-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Ensures images fill the container proportionally */
+    }
+
+    .image-slide {
+      flex: 0 0 100%; /* Each image takes 100% width of the slider */
+      height: 100%;
+    }
+
+    .slider-buttons {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+      z-index: 10;
+    }
+
+    .slider-button {
+      background-color: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 50%;
+      font-size: 18px;
+    }
+
+    .description {
+      font-size: 18px;
+      color: #555;
+      padding: 20px;
+      line-height: 1.6;
+    }
+
+    .back-link {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .back-link a {
+      font-size: 20px;
+      color: #007BFF;
+      text-decoration: none;
+    }
+
+    .back-link a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="title">
+    <h1>Laxman Jhula</h1>
+  </div>
+
+  <!-- Slider -->
+  <div class="split-slider">
+    <div class="image-container" id="image-container">
+      <div class="image-slide">
+        <img src="C:\Users\HP\Downloads\Suprams Internship\Day1\Laxman.jpg" alt="Laxman Jhula - View 1">
+      </div>
+      <div class="image-slide">
+        <img src="C:\Users\HP\Downloads\Suprams Internship\Day1\Ganga.jpg" alt="Laxman Jhula - Ganga View">
+      </div>
+      <div class="image-slide">
+        <img src="C:\Users\HP\Downloads\Suprams Internship\Day1\Neel.jpg" alt="Laxman Jhula - Neelkanth Temple">
+      </div>
+    </div>
+    <div class="slider-buttons">
+      <button class="slider-button prev" onclick="moveSlide(-1)">&#10094;</button>
+      <button class="slider-button next" onclick="moveSlide(1)">&#10095;</button>
+    </div>
+  </div>
+
+  <div class="description">
+    <p>Lakshman Jhula is a suspension bridge across the river Ganges... (Full description here)</p>
+  </div>
+
+  <div class="back-link">
+    <a href="index.html">Back to Home</a>
+  </div>
+
+  <script>
+    let slideIndex = 0;
+
+    function moveSlide(direction) {
+      const container = document.getElementById('image-container');
+      const slides = container.querySelectorAll('.image-slide');
+      const totalSlides = slides.length;
+
+      slideIndex = (slideIndex + direction + totalSlides) % totalSlides;
+
+      container.style.transform = `translateX(-${slideIndex * 100}%)`;
+    }
+  </script>
+</body>
+</html>
